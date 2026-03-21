@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 06 Manual | Web Crawling | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab6.css" rel="stylesheet">
+   <link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" style="color: #fff; text-decoration: none;"><i class="fas fa-arrow-left"></i> HOME</a>
+    </nav>
+
+    <header class="lab-header">
+        <p>LAB 06</p>
+        <h1>Web Crawling & Spidering Manual</h1>
+        <p>Automated mapping se website ke har ek link aur endpoint ko discover karein.</p>
+    </header>
+
+    <div class="content-container">
+
+        <section class="commands-section">
+            <h2><i class="fas fa-spider"></i> 30 Spidering Commands (Katana/Gau/Wayback)</h2>
+            <p>Site architecture map karne ke liye ye commands sabse fast hain.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Command / Tool</th>
+                            <th>Kyu Use Karein? (Action)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cmd-text">katana -u http://URL</td><td>Simple crawling (All links discovery).</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -d 5</td><td>Crawling depth set karna (Level 5 tak).</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -jc</td><td>JavaScript file ke andar se endpoints nikalna.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -kf all</td><td>Sare known fields (Parameters) fetch karna.</td></tr>
+                        <tr><td class="cmd-text">gau target.com</td><td>Wayback machine se purane links fetch karna.</td></tr>
+                        <tr><td class="cmd-text">waybackurls target.com</td><td>Archives se URL list nikalna.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -o links.txt</td><td>Results ko file me save karna.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -sc</td><td>Status codes (200, 404) ke sath results.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -ct 10</td><td>Crawling timeout set karna.</td></tr>
+                        <tr><td class="cmd-text">Burp -> Spider</td><td>Legacy Burp Suite automatic spidering.</td></tr>
+                        <tr><td class="cmd-text">Burp -> Dashboard -> Live Crawl</td><td>Professional version automated discovery.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -p 20</td><td>Paralellism (Speed badhane ke liye).</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -proxy http://127.0.0.1:8080</td><td>Burp ke through traffic bypass karna.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -nc</td><td>No color (Clean output for logs).</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -H "Cookie: XXX"</td><td>Authenticated crawling (Login ke sath).</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -fs rdn</td><td>Sirf same root domain crawl karna.</td></tr>
+                        <tr><td class="cmd-text">gospider -s http://URL</td><td>Go-based fast spidering tool.</td></tr>
+                        <tr><td class="cmd-text">hakrawler -url http://URL</td><td>Simple terminal crawler for bug bounty.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -silent</td><td>Sirf results dikhao, extra info nahi.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -extension js,php,json</td><td>Specific extensions par filter.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -aff</td><td>Automatic form filling simulation.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -u-agent "Mozilla"</td><td>Custom browser agent use karna.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -c 50</td><td>Concurrency level handle karna.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -cs</td><td>Crawl subdomains also.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -rl 10</td><td>Rate limiting (Slow crawling bypass).</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -ef css,png,jpg</td><td>Images aur CSS ko ignore karna.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -f url</td><td>Sirf URLs fetch karo.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -m head</td><td>Sirf headers check karke crawl karna.</td></tr>
+                        <tr><td class="cmd-text">katana -u URL -hl</td><td>Headless browser use karna (JavaScript heavy sites).</td></tr>
+                        <tr><td class="cmd-text">katana -version</td><td>Katana ka version check karna.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-project-diagram"></i> Step 1: Mapping the Attack Surface</h3>
+            <p>Crawling ka main maqsad website ke un pages ko dhundna hai jo Google par nahi dikhte. Hum modern tools jaise <strong>Katana</strong> use karenge.</p>
+            <div class="feature-box">
+                <strong>Why Katana?</strong> Ye JavaScript files ko bhi scan karta hai aur hidden parameters nikalta hai.
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-bolt"></i> Step 2: Live Scanning</h3>
+            <p>Apna crawling command run karein. Hum chahte hain ki tool JS files aur status codes dono fetch kare.</p>
+            <div class="terminal-box">katana -u https://target.com -jc -sc</div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-file-export"></i> Step 3: Analysis of Endpoints</h3>
+            <p>Output file ko check karein. Dhyan dein in endpoints par:</p>
+            <ul>
+                <li><strong>/api/v1/...</strong> (API vulnerabilities ho sakti hain).</li>
+                <li><strong>/dev/test/...</strong> (Testing environments jo bhul gaye hon).</li>
+                <li><strong>.env / .git</strong> (Secret keys leak ho sakti hain).</li>
+            </ul>
+        </section>
+
+        <section class="step-card" style="border-left: 5px solid #ff4b2b;">
+            <h3><i class="fas fa-shield-alt"></i> Ethical Note</h3>
+            <p>Spidering website par bohot saari requests bhejti hai. Isse kabhi kabhi server slow ho sakta hai. Practice ke liye hamesha permissions lein ya lab environment use karein.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy;  2026 | Secured by OwlGuard | All Rights Reserved </p>
+    </footer>
+
+</body>
+</html>

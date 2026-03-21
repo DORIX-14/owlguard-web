@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 01 Manual | Google Dorking | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <link href="lab1.css" rel="stylesheet">
+     <link rel="icon" type="image/png" href="favicon.jpeg">
+  
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" style="color: #fff; text-decoration: none;"><i class="fas fa-arrow-left"></i> HOME</a>
+    </nav>
+
+    <header class="lab-header">
+        <p>LAB 01</p>
+        <h1>Google Dorking Manual</h1>
+        <p>Advanced search operator ka use karke sensitive information nikalna.</p>
+    </header>
+
+    <div class="content-container">
+
+        <section class="commands-section">
+            <h2><i class="fas fa-terminal"></i> 30 Essential Dork Commands</h2>
+            <p>Ghabrana nahi hai! In commands ko samajhna asan hai. Ye sirf Google ko "Filter" karne ke tarike hain.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Kyu Use Karein? (Purpose)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="dork-cmd">intitle:"index of"</td><td>Open directories dhundne ke liye (Files list).</td></tr>
+                    <tr><td class="dork-cmd">filetype:pdf</td><td>Sirf PDF files search karne ke liye.</td></tr>
+                    <tr><td class="dork-cmd">site:example.com</td><td>Search ko sirf ek website tak limit karne ke liye.</td></tr>
+                    <tr><td class="dork-cmd">inurl:admin</td><td>Un URLs ke liye jisme 'admin' word ho.</td></tr>
+                    <tr><td class="dork-cmd">intext:"password"</td><td>Page ke content mein 'password' word dhundna.</td></tr>
+                    <tr><td class="dork-cmd">cache:example.com</td><td>Website ka purana (cached) version dekhna.</td></tr>
+                    <tr><td class="dork-cmd">related:target.com</td><td>Target se milti-julti websites dhundna.</td></tr>
+                    <tr><td class="dork-cmd">ext:log</td><td>Log files (.log) dhundne ke liye.</td></tr>
+                    <tr><td class="dork-cmd">intitle:"login"</td><td>Login pages search karne ke liye.</td></tr>
+                    <tr><td class="dork-cmd">"confidential" filetype:doc</td><td>Confidential documents dhundna.</td></tr>
+                    <tr><td class="dork-cmd">allinurl:auth login</td><td>Multiple words URL mein dhundna.</td></tr>
+                    <tr><td class="dork-cmd">site:*.gov</td><td>Sirf government domains search karna.</td></tr>
+                    <tr><td class="dork-cmd">inurl:wp-content</td><td>WordPress based websites target karna.</td></tr>
+                    <tr><td class="dork-cmd">intitle:"webcamXP 5"</td><td>Vulnerable webcams dhundna (Educational).</td></tr>
+                    <tr><td class="dork-cmd">filetype:sql "INSERT INTO"</td><td>Database backups dhundne ke liye.</td></tr>
+                    <tr><td class="dork-cmd">intext:"sql syntax error"</td><td>Vulnerable SQL sites dhundna.</td></tr>
+                    <tr><td class="dork-cmd">"internal use only"</td><td>Private documents search karna.</td></tr>
+                    <tr><td class="dork-cmd">intitle:"Index of" config.php</td><td>Configuration files dhundna.</td></tr>
+                    <tr><td class="dork-cmd">inurl:phpinfo()</td><td>Server information pages check karna.</td></tr>
+                    <tr><td class="dork-cmd">allintext:username password</td><td>Text mein dono words dhundna.</td></tr>
+                    <tr><td class="dork-cmd">filetype:env</td><td>Sensitive environment files dhundna.</td></tr>
+                    <tr><td class="dork-cmd">inurl:ftp</td><td>Open FTP servers search karna.</td></tr>
+                    <tr><td class="dork-cmd">site:pastebin.com "target"</td><td>Leaks dhundna Pastebin par.</td></tr>
+                    <tr><td class="dork-cmd">ext:xls "email"</td><td>Email lists dhundne ke liye.</td></tr>
+                    <tr><td class="dork-cmd">intitle:"Dashboard" site:com</td><td>Admin dashboards dhundna.</td></tr>
+                    <tr><td class="dork-cmd">inurl:/etc/passwd</td><td>Linux sensitive files (Agar exposed ho).</td></tr>
+                    <tr><td class="dork-cmd">filetype:bkp</td><td>Backup files dhundna.</td></tr>
+                    <tr><td class="dork-cmd">"API_KEY" ext:json</td><td>Exposed API keys dhundna.</td></tr>
+                    <tr><td class="dork-cmd">inurl:cgi-bin</td><td>Old scripts dhundna.</td></tr>
+                    <tr><td class="dork-cmd">site:github.com "password"</td><td>GitHub leaks check karna.</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="manual-card">
+            <h3><i class="fas fa-play-circle"></i> Step 1: Objective Setup</h3>
+            <p>Sabse pehle decide karein ki aapko kya dhundna hai. Example: Humein <strong>Example.com</strong> website ke exposed PDF documents chahiye.</p>
+        </section>
+
+        <section class="manual-card">
+            <h3><i class="fas fa-search"></i> Step 2: Crafting the Dork</h3>
+            <p>Apna dork taiyar karein. Hum combining techniques use karenge:</p>
+            <div class="code-box">site:example.com filetype:pdf</div>
+            <p>Ise Google search bar mein paste karein aur Enter dabayein.</p>
+        </section>
+
+        <section class="manual-card">
+            <h3><i class="fas fa-eye"></i> Step 3: Analysis</h3>
+            <p>Results ko dhyan se dekhein. Kya koi document "Confidential" ya "Internal" mark hai? Agar haan, toh wo ek potential security leak hai.</p>
+            <div class="pro-tip">
+                <strong>💡 Pro Tip:</strong> Agar Google "Captcha" maange, toh ghabrana nahi. Aap bahut fast search kar rahe hain isliye Google confirm kar raha hai ki aap robot nahi hain.
+            </div>
+        </section>
+
+        <section class="manual-card" style="border-left: 5px solid var(--accent-red);">
+            <h3><i class="fas fa-gavel"></i> Step 4: Ethical Responsibility</h3>
+            <p>Google Dorking legal hai jab tak aap public information dekh rahe hain. Lekin kisi ke private data ka galat use karna illegal hai. Hamesha <strong>White Hat</strong> bane rahein.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 OWLGUARD | OUR TEAM </p>
+    </footer>
+
+</body>
+</html>

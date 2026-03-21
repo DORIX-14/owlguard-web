@@ -1,0 +1,432 @@
+:root {
+    --primary: #00ff88;
+    --secondary: #60efff;
+    --bg-dark: #050609;
+    --card-bg: rgba(17, 21, 28, 0.7);
+    --terminal-green: #0f0;
+    --text-gray: #a1a1a1;
+    --border: rgba(255, 255, 255, 0.08);
+    --neon-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- BACKGROUND EFFECTS --- */
+.cyber-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, #0d1a30 0%, #050609 100%);
+    z-index: -2;
+}
+
+.grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+/* --- MODERN NAVIGATION (WITH LOGO PLACEHOLDER) --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background: rgba(5, 6, 9, 0.9);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    margin-right: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* --- MAIN CONTAINER --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.main-header h1 {
+    font-family: 'Fira Code', monospace;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.main-header h1 span {
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.main-header p {
+    color: var(--text-gray);
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+/* --- PREMIUM CARDS --- */
+.op-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    position: relative;
+    transition: 0.3s;
+}
+
+.op-card:hover {
+    border-color: rgba(0, 255, 136, 0.2);
+    transform: translateY(-5px);
+}
+
+.op-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.op-card h2 {
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+}
+
+.op-card h2 i {
+    color: var(--primary);
+    background: rgba(0, 255, 136, 0.05);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* --- COMMAND TERMINAL STYLE --- */
+.cmd-category h3 {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    margin: 20px 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.terminal-window {
+    background: #020202;
+    padding: 25px;
+    border-radius: 15px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: var(--terminal-green);
+    border: 1px solid #1a1a1a;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.cmd-item {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.cmd-item::before {
+    content: '$';
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.cmd-item b {
+    color: #fff;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+/* --- SETUP GUIDE STYLES --- */
+.setup-step {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.setup-step:hover {
+    background: rgba(0, 255, 136, 0.02);
+    border-color: var(--primary);
+}
+
+.setup-step h4 {
+    color: #fff;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.setup-step h4 span {
+    color: var(--primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 1.2rem;
+}
+
+.setup-step p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-left: 30px;
+}
+
+.btn-container {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--primary);
+    color: #050609;
+    padding: 16px 40px;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.4s;
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
+}
+
+/* --- PREMIUM FOOTER --- */
+footer {
+    background: #080a10;
+    padding: 80px 8% 30px;
+    border-top: 1px solid #222;
+    margin-top: 100px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 255, 136, 0.1);
+    padding: 8px 15px;
+    border-radius: 50px;
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 20px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.footer-column h4 {
+    color: #fff;
+    margin-bottom: 25px;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 30px;
+    height: 2px;
+    background: var(--primary);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-socials a {
+    width: 35px;
+    height: 35px;
+    background: #11151c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #fff;
+    border: 1px solid #222;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.footer-socials a:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: var(--neon-shadow);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #222;
+    color: var(--text-gray);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .op-card {
+        padding: 30px 20px;
+    }
+}

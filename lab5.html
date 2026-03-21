@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 05 Manual | Directory Busting | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab5.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" style="color: #fff; text-decoration: none;"><i class="fas fa-arrow-left"></i> HOME</a>
+    </nav>
+
+    <header class="lab-header">
+        <p>LAB 05</p>
+        <h1>Directory Busting Manual</h1>
+        <p>Website ke hidden files aur secret directories ko uncover karna.</p>
+    </header>
+
+    <div class="content-container">
+
+        <section class="commands-section">
+            <h2><i class="fas fa-folder-open"></i> 30 Discovery Commands (ffuf/Dirb)</h2>
+            <p>Hidden content dhundne ke liye ye commands aapke weapon hain. Tool: <strong>ffuf</strong> is recommended.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Command / Param</th>
+                            <th>Kya Hoga? (Logic)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cmd-text">ffuf -u http://URL/FUZZ -w wordlist.txt</td><td>Basic directory fuzzing.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u http://URL/FUZZ -e .php,.txt,.html</td><td>Specific extensions (.php, .txt) search karna.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u http://URL/FUZZ -mc 200</td><td>Sirf "Status 200 OK" wale results dikhao.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u http://URL/FUZZ -fc 404</td><td>"404 Not Found" wale results filter karo.</td></tr>
+                        <tr><td class="cmd-text">dirb http://URL/</td><td>Simple automated directory scan.</td></tr>
+                        <tr><td class="cmd-text">dirb http://URL/ -X .bak</td><td>Backup files dhundne ke liye (.bak).</td></tr>
+                        <tr><td class="cmd-text">ffuf -u http://URL/ -H "Host: FUZZ.target.com"</td><td>Subdomain discovery through headers.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u http://URL/FUZZ -ic</td><td>Ignore comments in wordlist.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u http://URL/FUZZ -t 100</td><td>Threads badhana (Speed increase).</td></tr>
+                        <tr><td class="cmd-text">dirbuster -u http://URL/</td><td>GUI based directory discovery tool.</td></tr>
+                        <tr><td class="cmd-text">gobuster dir -u http://URL/ -w wordlist</td><td>Fast Golang based tool.</td></tr>
+                        <tr><td class="cmd-text">ffuf -r</td><td>Follow redirects (Redirects ko follow karna).</td></tr>
+                        <tr><td class="cmd-text">ffuf -p 1.0</td><td>Request ke beech me pause dena (Slow scan).</td></tr>
+                        <tr><td class="cmd-text">ffuf -v</td><td>Verbose output (Details ke sath).</td></tr>
+                        <tr><td class="cmd-text">ffuf -u http://URL/FUZZ -x http://proxy:8080</td><td>Proxy (Burp) ke through scan chalana.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u http://URL/FUZZ -H "Authorization: Basic XXX"</td><td>Authenticated pages scan karna.</td></tr>
+                        <tr><td class="cmd-text">/usr/share/wordlists/dirb/common.txt</td><td>Sabse common wordlist ka path.</td></tr>
+                        <tr><td class="cmd-text">/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt</td><td>Medium size powerful wordlist.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u URL/FUZZ -fs 4242</td><td>Specific file size ko filter out karna.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u URL/FUZZ -fl 10</td><td>Lines ke basis par filter karna.</td></tr>
+                        <tr><td class="cmd-text">ffuf -o results.json</td><td>Result ko JSON file me save karna.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u URL/FUZZ -maxtime 60</td><td>Scan ko 60 seconds me stop karna.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u URL/FUZZ -mode clusterbomb</td><td>Advanced multi-payload fuzzing.</td></tr>
+                        <tr><td class="cmd-text">dirb http://URL/ -a "User-Agent"</td><td>Custom User-Agent header bhejna.</td></tr>
+                        <tr><td class="cmd-text">inurl:admin login site:target.com</td><td>Dorking + Busting approach.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u URL/FUZZ -request request.txt</td><td>Burp request file se scan chalana.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u URL/FUZZ -H "X-Forwarded-For: 127.0.0.1"</td><td>IP bypass headers use karna.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u URL/FUZZ -w WL1:WL2</td><td>Multi-wordlist scanning.</td></tr>
+                        <tr><td class="cmd-text">ffuf -u URL/FUZZ -s</td><td>Silent mode (Sirf results dikhao).</td></tr>
+                        <tr><td class="cmd-text">ffuf -V</td><td>Version check karne ke liye.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-tasks"></i> Step 1: Wordlist Selection</h3>
+            <p>Directory busting ka sabse bada raaz "Wordlist" hai. Agar wordlist me directory ka naam nahi hai, toh tool use nahi dhund payega. Hum <code>common.txt</code> se start karenge.</p>
+            <div class="tag-list">
+                <span class="tag">Seclists</span>
+                <span class="tag">Dirb Lists</span>
+                <span class="tag">RockYou (Not for dirs)</span>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-bolt"></i> Step 2: Running the Attack</h3>
+            <p>Ffuf tool ka use karke hum website ke har folder par "Brute-force" karenge. Dhyan rahe hum extensions (.php, .config) bhi check karein.</p>
+            <div class="terminal-box">ffuf -u http://target.com/FUZZ -w /usr/share/wordlists/dirb/common.txt -e .php,.txt</div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-shield-alt"></i> Step 3: Analyzing Response Codes</h3>
+            <p>Tool chalne ke baad, humein results check karne hain:</p>
+            <ul>
+                <li><strong>200 OK:</strong> Direct access mil gaya!</li>
+                <li><strong>301 Redirect:</strong> Folder exist karta hai par humein kahin aur bhej raha hai.</li>
+                <li><strong>403 Forbidden:</strong> Folder hai par humein permission nahi hai (Ye bhi important hai!).</li>
+            </ul>
+        </section>
+
+        <section class="step-card" style="border-left: 5px solid #ff4b2b;">
+            <h3><i class="fas fa-exclamation-triangle"></i> Pro Tip</h3>
+            <p>Agar koi website firewall use kar rahi hai, toh bohot fast scan karne se aapka IP block ho sakta hai. Aise waqt me <code>-t 10</code> (low threads) ya <code>-p 1.0</code> (pause) ka use karein.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy;  2026 | Secured by OwlGuard | All Rights Reserved </p>
+    </footer>
+
+</body>
+</html>

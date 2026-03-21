@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 04 Manual | Nmap Scanning | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab4.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" style="color: #fff; text-decoration: none;"><i class="fas fa-arrow-left"></i> HOME</a>
+    </nav>
+
+    <header class="lab-header">
+        <p>LAB 04</p>
+        <h1>Nmap Scanning Manual</h1>
+        <p>Target discovery aur network mapping ka sabse powerful tool.</p>
+    </header>
+
+    <div class="content-container">
+
+        <section class="commands-section">
+            <h2><i class="fas fa-terminal"></i> 30 Pro Nmap Commands</h2>
+            <p>Ye list aapka time bachayegi. Inhe terminal par try karein aur result dekhein.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Description (Hindi)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="nmap-cmd">nmap [IP]</td><td>Basic port scan (Top 1000 ports).</td></tr>
+                        <tr><td class="nmap-cmd">nmap -v [IP]</td><td>Verbose mode (Zyada detail dikhayega).</td></tr>
+                        <tr><td class="nmap-cmd">nmap -p 80 [IP]</td><td>Sirf specific port (80) scan karein.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -p 1-100 [IP]</td><td>Range scan (1 se 100 ports).</td></tr>
+                        <tr><td class="nmap-cmd">nmap -p- [IP]</td><td>Sare 65535 ports scan karein.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -sS [IP]</td><td>Stealth Scan (Firewall bypass ke liye).</td></tr>
+                        <tr><td class="nmap-cmd">nmap -sT [IP]</td><td>TCP Connect Scan (Full connection).</td></tr>
+                        <tr><td class="nmap-cmd">nmap -sU [IP]</td><td>UDP Port scan (Slow hota hai).</td></tr>
+                        <tr><td class="nmap-cmd">nmap -sV [IP]</td><td>Service Version detection.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -O [IP]</td><td>Operating System (OS) detection.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -A [IP]</td><td>Aggressive scan (OS, Services, Scripts).</td></tr>
+                        <tr><td class="nmap-cmd">nmap -sn [IP]</td><td>Ping scan (Check host is live or not).</td></tr>
+                        <tr><td class="nmap-cmd">nmap -iL list.txt</td><td>Ek file se sare IPs scan karein.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -F [IP]</td><td>Fast scan (Top 100 ports only).</td></tr>
+                        <tr><td class="nmap-cmd">nmap --top-ports 20 [IP]</td><td>Top 20 most common ports scan.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -Pn [IP]</td><td>Skip ping (Jab ICMP blocked ho).</td></tr>
+                        <tr><td class="nmap-cmd">nmap -T4 [IP]</td><td>Timing set karna (Faster scan).</td></tr>
+                        <tr><td class="nmap-cmd">nmap -f [IP]</td><td>Fragment packets (Firewall bypass).</td></tr>
+                        <tr><td class="nmap-cmd">nmap --script=vuln [IP]</td><td>Security vulnerabilities check karna.</td></tr>
+                        <tr><td class="nmap-cmd">nmap --script=auth [IP]</td><td>Auth related scripts chalana.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -oN output.txt</td><td>Result ko normal text file me save karein.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -oX output.xml</td><td>XML format me result save karein.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -sC [IP]</td><td>Default scripts ke sath scan karna.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -reason [IP]</td><td>Kyu port open ya closed hai, wajah janein.</td></tr>
+                        <tr><td class="nmap-cmd">nmap -6 [IP]</td><td>IPv6 scanning ke liye.</td></tr>
+                        <tr><td class="nmap-cmd">nmap --badsum [IP]</td><td>Bad checksum packets bhejna (Firewall test).</td></tr>
+                        <tr><td class="nmap-cmd">nmap --open [IP]</td><td>Sirf open ports dikhao, baaki chhupao.</td></tr>
+                        <tr><td class="nmap-cmd">nmap --iflist</td><td>Apne network interfaces ki list dekhna.</td></tr>
+                        <tr><td class="nmap-cmd">nmap --packet-trace</td><td>Dekho har packet kahan ja raha hai.</td></tr>
+                        <tr><td class="nmap-cmd">nmap --help</td><td>Help menu open karne ke liye.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-network-wired"></i> Step 1: Network Discovery</h3>
+            <p>Pehle humein ye dekhna hai ki target up hai ya nahi. Agar host down hai toh scan fail ho jayega.</p>
+            <div class="terminal-box">nmap -sn 192.168.1.1</div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-search-plus"></i> Step 2: Service & OS Identification</h3>
+            <p>Ab hum deep jayenge aur dekhenge ki machine par kya chal raha hai. Linux hai ya Windows? Apache hai ya Nginx?</p>
+            <div class="terminal-box">nmap -sV -O 192.168.1.1</div>
+            <span class="output">Starting Nmap 7.92... <br> OS details: Linux 5.x <br> Port 80: Apache 2.4.41</span>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-shield-virus"></i> Step 3: Vulnerability Scanning</h3>
+            <p>Hacking ka real kaam yahan shuru hota hai. Hum Nmap ko bolenge ki wo target par vulnerabilities dhunde.</p>
+            <div class="terminal-box">nmap --script=vuln 192.168.1.1</div>
+            <div class="note-box">
+                <strong>💡 Tip:</strong> Nmap Scripts (.nse) bahut powerful hote hain. Inhe use karte waqt hamesha output file (-oN) save karein taaki analysis asan ho.
+            </div>
+        </section>
+
+        <section class="step-card" style="border-left: 5px solid #ff4b2b;">
+            <h3><i class="fas fa-user-secret"></i> Ethical Warning</h3>
+            <p>Bina permission kisi public server (jaise google.com) ko scan na karein. Sirf apne local devices ya lab machines (jaise TryHackMe) par hi practice karein.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy;  2026 | Secured by OwlGuard | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

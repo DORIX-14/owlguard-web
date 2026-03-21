@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 03 Manual | Phishing Analysis | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab3.css" rel="stylesheet">
+   <link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> HOME</a>
+    </nav>
+
+    <header class="lab-header">
+        <p>LAB ID: 03</p>
+        <h1>Phishing Analysis</h1>
+        <p>Analyzing suspicious emails and malicious headers to track attackers.</p>
+    </header>
+
+    <main class="content-container">
+        
+        <section class="manual-section">
+            <h2><i class="fas fa-bullseye"></i> Objective</h2>
+            <p>Is lab ka main goal hai suspicious emails ko investigate karna, unke hidden metadata (headers) ko analyze karna aur sender ki asli identity (IP Address) ka pata lagana.</p>
+        </section>
+
+        <section class="manual-section">
+            <h2><i class="fas fa-tools"></i> Required Tools</h2>
+            <div class="tool-tags">
+                <span class="tool-tag">MXToolbox</span>
+                <span class="tool-tag">Messageheader (Google)</span>
+                <span class="tool-tag">VirusTotal</span>
+                <span class="tool-tag">Whois.domaintools</span>
+            </div>
+        </section>
+
+        <section class="manual-section">
+            <h2><i class="fas fa-list-ol"></i> Analysis Procedure</h2>
+            <ul class="step-list">
+                <li>
+                    <i class="fas fa-chevron-right"></i>
+                    <span><strong>Step 1: Extract Header:</strong> Apne email account mein suspicious mail ko open karein. "Show Original" ya "View Header" par click karke sara text copy karein.</span>
+                </li>
+                <li>
+                    <i class="fas fa-chevron-right"></i>
+                    <span><strong>Step 2: Trace Sender:</strong> Google Messageheader tool par header paste karein. Check karein 'Delay' kahan ho raha hai aur sender ka original IP address kya hai.</span>
+                </li>
+                <li>
+                    <i class="fas fa-chevron-right"></i>
+                    <span><strong>Step 3: Check SPF/DKIM/DMARC:</strong> Ye teen parameters batayenge ki email spoofed hai ya real. Agar ye "Fail" hain, toh email 100% fake hai.</span>
+                </li>
+                <li>
+                    <i class="fas fa-chevron-right"></i>
+                    <span><strong>Step 4: URL Inspection:</strong> Email mein maujood links ko direct click na karein. URL ko VirusTotal par scan karein malicious scripts ke liye.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="manual-section">
+            <h2><i class="fas fa-search-location"></i> Key Headers to Check</h2>
+            <p>Dhyan dein in important parameters par jab aap forensic analysis karein:</p>
+            <div class="code-block">
+                X-Original-IP: [Sender ka actual IP]<br>
+                Return-Path: [Agar email fail hui toh kahan jayegi]<br>
+                Reply-To: [Agar sender ka email alag hai Return-Path se]
+            </div>
+        </section>
+
+        <div class="warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>SAFETY WARNING:</strong> Kabhi bhi suspicious attachments (.exe, .zip) ko apne personal computer par download ya open na karein. Hamesha Virtual Machine (VM) ya Sandbox environment ka use karein.
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy;  2026 | Secured by OwlGuard | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

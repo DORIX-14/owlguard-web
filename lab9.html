@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 09 Manual | Password Cracking | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab9.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" style="color: #fff; text-decoration: none;"><i class="fas fa-arrow-left"></i> HOME </a>
+    </nav>
+
+    <header class="lab-header">
+        <p>LAB 09</p>
+        <h1>Password Cracking Manual</h1>
+        <p>Hashes ko decrypt karna aur dictionary attacks perform karna.</p>
+    </header>
+
+    <div class="content-container">
+
+        <section class="commands-section">
+            <h2><i class="fas fa-key"></i> 30 Cracking Commands (Hashcat / John)</h2>
+            <p>Hash cracking ke liye ye commands industry standard hain.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Kyu Use Karein? (Action)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cmd-text">john hash.txt</td><td>Simple automated cracking (Auto-detect mode).</td></tr>
+                        <tr><td class="cmd-text">john --wordlist=pass.txt hash.txt</td><td>Dictionary attack using a wordlist.</td></tr>
+                        <tr><td class="cmd-text">john --show hash.txt</td><td>Cracked passwords ko display karna.</td></tr>
+                        <tr><td class="cmd-text">john --format=raw-md5 hash.txt</td><td>Specific MD5 hash crack karna.</td></tr>
+                        <tr><td class="cmd-text">john --rules wordlist.txt</td><td>Wordlist par extra rules (numbers/symbols) apply karna.</td></tr>
+                        <tr><td class="cmd-text">hashcat -m 0 hash.txt wl.txt</td><td>MD5 hash cracking (Super fast GPU).</td></tr>
+                        <tr><td class="cmd-text">hashcat -m 100 hash.txt wl.txt</td><td>SHA1 hash cracking.</td></tr>
+                        <tr><td class="cmd-text">hashcat -m 1800 hash.txt wl.txt</td><td>SHA-512 (Linux passwords) cracking.</td></tr>
+                        <tr><td class="cmd-text">hashcat -a 3 hash.txt ?a?a?a?a</td><td>Brute-force (Sare combinations check karna).</td></tr>
+                        <tr><td class="cmd-text">hashcat --identify hash.txt</td><td>Anjan hash ka type pata lagana.</td></tr>
+                        <tr><td class="cmd-text">hashid -m "hash_string"</td><td>Hash algorithm identify karne ka simple tool.</td></tr>
+                        <tr><td class="cmd-text">fcrackzip -u -D -p wl.txt file.zip</td><td>ZIP file ka password crack karna.</td></tr>
+                        <tr><td class="cmd-text">pdfcrack -f file.pdf -w wl.txt</td><td>PDF file ka password crack karna.</td></tr>
+                        <tr><td class="cmd-text">hashcat -I</td><td>GPU/CPU device information check karna.</td></tr>
+                        <tr><td class="cmd-text">hashcat --status</td><td>Running scan ka status dekhna.</td></tr>
+                        <tr><td class="cmd-text">john --list=formats</td><td>Supported hash formats ki list.</td></tr>
+                        <tr><td class="cmd-text">unshadow /etc/passwd /etc/shadow</td><td>Linux pass files ko crack-ready banana.</td></tr>
+                        <tr><td class="cmd-text">john --incremental hash.txt</td><td>Try every possible character combination.</td></tr>
+                        <tr><td class="cmd-text">hashcat -m 0 -o cracked.txt hash.txt</td><td>Results ko file me save karna.</td></tr>
+                        <tr><td class="cmd-text">hashcat -a 1 hash.txt wl1.txt wl2.txt</td><td>Combinator attack (Two wordlists merge).</td></tr>
+                        <tr><td class="cmd-text">hashcat -t 32</td><td>Workload profile set karna (Speed).</td></tr>
+                        <tr><td class="cmd-text">hashcat --force</td><td>Error ignore karke scan start karna.</td></tr>
+                        <tr><td class="cmd-text">python3 office2john.py file.docx</td><td>Office files ko hash format me convert karna.</td></tr>
+                        <tr><td class="cmd-text">python3 ssh2john.py id_rsa</td><td>SSH keys ko crack-ready banana.</td></tr>
+                        <tr><td class="cmd-text">hashcat -m 2500 wpa.hccapx wl.txt</td><td>WPA/WPA2 Wi-Fi password cracking.</td></tr>
+                        <tr><td class="cmd-text">john --make-charset=my.chr</td><td>Custom charset banana.</td></tr>
+                        <tr><td class="cmd-text">hashcat -m 10 hash.txt wl.txt</td><td>MD5(Salt) cracking.</td></tr>
+                        <tr><td class="cmd-text">hashcat --benchmark</td><td>System ki cracking speed test karna.</td></tr>
+                        <tr><td class="cmd-text">john --single hash.txt</td><td>Information based cracking (Simple).</td></tr>
+                        <tr><td class="cmd-text">hashcat --help</td><td>Advanced commands guide.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-fingerprint"></i> Step 1: Identify the Hash</h3>
+            <p>Sabse pehle humein ye janana hai ki hash kaunse type ka hai (MD5, SHA1, SHA256). Iske liye hum <strong>HashID</strong> tool use karte hain.</p>
+            <div class="logic-box">
+                <strong>Logic:</strong> Hashing one-way hoti hai. Hum use wapas nahi "decrypt" kar sakte, isliye hum plain text passwords ko hash karke unhe match karte hain.
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-book"></i> Step 2: Choosing a Wordlist</h3>
+            <p>Cracking ki success wordlist par depend karti hai. Sabse famous wordlist <strong>RockYou.txt</strong> hai, jisme millions of leaked passwords hain.</p>
+            <div class="terminal-box">ls /usr/share/wordlists/rockyou.txt</div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-hammer"></i> Step 3: Running the Attack</h3>
+            <p>Ab hum <strong>Hashcat</strong> ka use karenge (jo John se fast hai kyunki ye GPU use karta hai). Example: MD5 hash crack karne ke liye:</p>
+            <div class="terminal-box">hashcat -m 0 my_hash.txt /usr/share/wordlists/rockyou.txt</div>
+        </section>
+
+        <section class="step-card" style="border-left: 5px solid #ff4b2b;">
+            <h3><i class="fas fa-user-shield"></i> Security Tip</h3>
+            <p>Weak passwords (jaise 123456) seconds mein crack ho jate hain. Hamesha long aur complex passwords use karein taaki "Brute-force" attack ko saalon lag jayein.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 | Secured by OwlGuard | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

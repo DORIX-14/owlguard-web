@@ -1,0 +1,56 @@
+
+        :root {
+            --primary-color: #00ff88;
+            --bg-dark: #050609;
+            --card-bg: #11151c;
+            --android-green: #3DDC84;
+            --ctf-orange: #f39c12;
+            --text-white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-white); line-height: 1.6; }
+
+        .content-container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* --- CIA IMPACT FOR MOBILE --- */
+        .cia-box { 
+            background: #1a1f29; 
+            padding: 20px; 
+            border-radius: 12px; 
+            border: 2px dashed var(--android-green);
+            margin-bottom: 30px;
+        }
+        .impact-list { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .impact-item { background: #000; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--android-green); font-size: 0.8rem; }
+
+        /* --- CTF CHALLENGE STYLE --- */
+        .step-card { 
+            background: var(--card-bg); 
+            padding: 25px; 
+            border-radius: 12px; 
+            margin-bottom: 25px; 
+            border-right: 5px solid var(--ctf-orange); 
+        }
+        .terminal-box { 
+            background: #000; 
+            padding: 15px; 
+            border-radius: 8px; 
+            font-family: 'Courier New', monospace; 
+            color: var(--primary-color);
+            margin: 15px 0;
+            border-left: 3px solid var(--android-green);
+        }
+
+        .flag-box {
+            background: rgba(243, 156, 18, 0.1);
+            border: 1px solid var(--ctf-orange);
+            padding: 10px;
+            color: var(--ctf-orange);
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        h2, h3 { color: var(--android-green); }
+    

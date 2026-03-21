@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> FOUNDATION | OwlGuard </title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="pre.css">
+    <link rel="icon" type="image/png" href="favicon.jpeg">
+    
+</head>
+<body>
+
+    <div class="cyber-bg"></div>
+    <div class="grid-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo-container">
+            <div class="logo-icon"><img src="logo.png" alt="OwlGuard"></div>
+            <div class="logo-text">OWLGUARD</div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="14labs.html">14 Labs</a></li>
+            <li><a href="review.html">Wall of Fame</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="main-header">
+            <h1>00. PRE-<span>REQUISITES</span></h1>
+            <p>LEVEL 0: ESTABLISHING THE OPERATIONAL FOUNDATION</p>
+        </div>
+
+        <div class="op-card">
+            <h2><i class="fab fa-linux"></i> Essential Linux Commands (Top 30)</h2>
+            <p style="color: var(--text-gray); margin-bottom: 20px; font-size: 0.95rem;">Master these terminal commands. They are the primary tools of any security researcher.</p>
+            
+            <div class="terminal-window">
+                <div class="cmd-category">
+                    <h3>// System Basics</h3>
+                    <div class="cmd-item"><b>pwd</b> Print working directory (Where am I?)</div>
+                    <div class="cmd-item"><b>ls -la</b> List all files, including hidden ones with details.</div>
+                    <div class="cmd-item"><b>cd [path]</b> Change directory to specified path.</div>
+                    <div class="cmd-item"><b>clear</b> Clear the terminal screen.</div>
+                    <div class="cmd-item"><b>man [command]</b> Open manual/help page for a command.</div>
+                    <div class="cmd-item"><b>whoami</b> Display the current logged-in user.</div>
+                    <div class="cmd-item"><b>id</b> Show user and group IDs.</div>
+                    <div class="cmd-item"><b>uptime</b> Check how long the system has been running.</div>
+                </div>
+
+                <div class="cmd-category">
+                    <h3>// File Mastery</h3>
+                    <div class="cmd-item"><b>mkdir [name]</b> Create a new directory.</div>
+                    <div class="cmd-item"><b>touch [name]</b> Create an empty file.</div>
+                    <div class="cmd-item"><b>cp [src] [dest]</b> Copy files or directories.</div>
+                    <div class="cmd-item"><b>mv [src] [dest]</b> Move or rename files/directories.</div>
+                    <div class="cmd-item"><b>rm [file]</b> Remove a file. Use -r for directories.</div>
+                    <div class="cmd-item"><b>cat [file]</b> Display contents of a file.</div>
+                    <div class="cmd-item"><b>grep [pattern] [file]</b> Search for text patterns within files.</div>
+                    <div class="cmd-item"><b>head/tail [file]</b> View first/last 10 lines of a file.</div>
+                    <div class="cmd-item"><b>chmod [perms] [file]</b> Change file permissions (e.g., chmod +x).</div>
+                    <div class="cmd-item"><b>chown [user] [file]</b> Change file owner.</div>
+                </div>
+
+                <div class="cmd-category">
+                    <h3>// Networking & Privilege</h3>
+                    <div class="cmd-item"><b>sudo [command]</b> Execute command with root/admin privileges.</div>
+                    <div class="cmd-item"><b>sudo su</b> Switch to root user permanently (Be careful!).</div>
+                    <div class="cmd-item"><b>ifconfig</b> or <b>ip a</b> Check network interfaces and IP addresses.</div>
+                    <div class="cmd-item"><b>ping [host]</b> Test connectivity to a host.</div>
+                    <div class="cmd-item"><b>netstat -antp</b> List active network connections and ports.</div>
+                    <div class="cmd-item"><b>ssh [user]@[ip]</b> Connect to a remote machine securely.</div>
+                    <div class="cmd-item"><b>apt update</b> Refresh package list from repositories.</div>
+                    <div class="cmd-item"><b>apt install [pkg]</b> Download and install a software package.</div>
+                </div>
+
+                <div class="cmd-category">
+                    <h3>// Process & Logs</h3>
+                    <div class="cmd-item"><b>ps aux</b> View all running processes.</div>
+                    <div class="cmd-item"><b>top</b> Real-time system resource and process monitoring.</div>
+                    <div class="cmd-item"><b>kill [PID]</b> Terminate a process by its ID.</div>
+                    <div class="cmd-item"><b>history</b> View command history.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="op-card">
+            <h2><i class="fas fa-tools"></i> Basic Setup & Virtualization</h2>
+            <p style="color: var(--text-gray); margin-bottom: 25px;">Never practice on your host machine. Build a safe, isolated hacking environment.</p>
+            
+            <div class="setup-guide">
+                <div class="setup-step">
+                    <h4><span>1.</span> Install a Hypervisor</h4>
+                    <p>Download and install <b>Oracle VirtualBox</b> (Free) or VMware Workstation. This software lets you run "virtual" computers inside your main OS.</p>
+                </div>
+                <div class="setup-step">
+                    <h4><span>2.</span> Download Kali Linux</h4>
+                    <p>Go to kali.org and download the <b>Kali Linux VirtualBox Image</b> (OVA file). This pre-configured version is easiest to setup.</p>
+                </div>
+                <div class="setup-step">
+                    <h4><span>3.</span> Import and Configure</h4>
+                    <p>Double-click the OVA file to import it into VirtualBox. In settings, ensure Network is set to <b>"Bridged Adapter"</b> or <b>"NAT"</b> to get internet access within Kali.</p>
+                </div>
+                <div class="setup-step">
+                    <h4><span>4.</span> First Launch & Update</h4>
+                    <p>Start the VM (Default login is usually kali/kali). Immediately open a terminal and run:<br>
+                    <span style="font-family:'Fira Code', monospace; color:var(--primary); background:#000; padding:2px 5px; border-radius:4px;">sudo apt update && sudo apt full-upgrade -y</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="lab1.html" class="cta-btn">Unlock Lab 01 <i class="fas fa-bolt"></i></a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="logo-container">
+                    <div class="logo-text" style="font-size: 1.8rem;">OWLGUARD<span>.</span></div>
+                </div>
+                <p style="color:var(--text-gray); font-size:0.9rem; margin-top: 15px;">Awareness is the first step towards a secure future. Join OwlGuard and master digital defense.</p>
+                <div class="status-indicator">
+                    <div class="status-dot"></div> System Status: OPERATIONAL
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Academy</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="14labs.html">14 Labs</a></li>
+                    <li><a href="review.html">Wall of Fame</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="legal.html#privacypolicy">Privacy Policy</a></li>
+                    <li><a href="legal.html#termsofservice">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Command Center</h4>
+                <div class="footer-socials">
+                    
+                    <a href="https://linkedin.com/in/krrishpandey06" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://instagram.com/owlguard.in" target="_blank"><i class="fab fa-instagram"></i></a>
+                   
+                </div>
+                <p style="margin-top: 20px; font-size: 0.8rem; color: var(--text-gray);">blackblunix@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 OUR TEAM | Secured by OwlGuard  | All Rights Reserved</p>
+        </div>
+    </footer>
+
+</body>
+</html>

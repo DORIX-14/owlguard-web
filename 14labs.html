@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber-Syllabus | OwlGuard Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.jpeg">
+    <link href="14labs.css" rel="stylesheet">
+   
+</head>
+<body>
+
+    <div class="cyber-bg"></div>
+    <div class="grid-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo-container">
+            <div class="logo-icon"><img src="logo.png" alt="logo"></div>
+            <div class="logo-text">OWLGUARD</div>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="pre.html" style="color:var(--secondary); font-weight:700;">Foundation</a>
+            <a href="14labs.html" class="active" style="color: var(--primary);">14 Labs</a>
+            <a href="review.html">Wall of Fame</a>
+            <a href="contact.html" class="nav-contact-btn">Contact</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <span style="color: var(--primary); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem;">The Roadmap to Mastery</span>
+        <h1>Master The <span>Craft</span></h1>
+        <p>Expertly curated 14 labs designed to take you from a curious beginner to a professional security researcher.</p>
+    </div>
+
+    <div class="labs-container" id="labsGrid">
+        </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo">OWLGUARD<span>.</span></div>
+                <p>Securing the future through high-impact education. Join OwlGuard Academy and master the art of digital defense.</p>
+                <div class="status-indicator">
+                    <div class="status-dot"></div> OwlGuard Systems: OPERATIONAL
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Learning Path</h4>
+                <ul class="footer-links">
+                    <li><a href="pre.html">Level 0: Foundation</a></li>
+                    <li><a href="lab1.html">Reconnaissance</a></li>
+                    <li><a href="lab4.html">Network Security</a></li>
+                    <li><a href="lab10.html">Web Exploitation</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="review.html">Wall of fame</a></li>
+                    <li><a href="14labs.html">14 Labs</a></li>
+                    <li><a href="contact.html">Consultation</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <div class="footer-socials">
+                   
+                    <a href="https://www.instagram.com/owlguard.in"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p style="margin-top: 25px; font-size: 0.85rem; color: var(--text-gray); font-family: monospace;">blackblunix@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KRRISH PANDEY | Secured by OwlGuard Systems | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+    const labsArray = [
+        { t: "Google Dorking", i: "fa-search", d: "Finding sensitive info via advanced Google queries.", l: "lab1.html" },
+        { t: "WHOIS & DNS Recon", i: "fa-id-card", d: "Target identification and domain mapping.", l: "lab2.html" },
+        { t: "Phishing Analysis", i: "fa-envelope-open", d: "Analyzing malicious headers and fake links.", l: "lab3.html" },
+        { t: "Nmap Port Scanning", i: "fa-network-wired", d: "Scanning ports and identifying services.", l: "lab4.html" },
+        { t: "Vulnerability Research", i: "fa-bug", d: "Finding public exploits for target services.", l: "lab5.html" },
+        { t: "Hash Cracking", i: "fa-key", d: "Cracking MD5/SHA hashes using power tools.", l: "lab6.html" },
+        { t: "Metadata Extraction", i: "fa-file-code", d: "Finding hidden info inside PDF/Image files.", l: "lab7.html" },
+        { t: "Social Engineering", i: "fa-user-secret", d: "The art of human hacking and defense.", l: "lab8.html" },
+        { t: "Wireless Security", i: "fa-wifi", d: "Testing Wi-Fi encryption and protocols.", l: "lab9.html" },
+        { t: "SQL Injection", i: "fa-database", d: "Bypassing logins via database manipulation.", l: "lab10.html" },
+        { t: "Cross Site Scripting", i: "fa-code", d: "Web-based script injection techniques.", l: "lab11.html" },
+        { t: "System Hardening", i: "fa-shield-alt", d: "Securing OS against common attacks.", l: "lab12.html" },
+        { t: "Burp Suite Intro", i: "fa-project-diagram", d: "Professional web proxy tools usage.", l: "lab13.html" },
+        { t: "Final Capstone", i: "fa-flag-checkered", d: "Complete real-world breach & secure test.", l: "lab14.html" }
+    ];
+
+    const container = document.getElementById('labsGrid');
+    container.innerHTML = labsArray.map((lab, i) => `
+        <div class="lab-card" onclick="window.location.href='${lab.l}'">
+            <span class="lab-num">${String(i + 1).padStart(2, '0')}</span>
+            <i class="fas ${lab.i}"></i>
+            <h3>${lab.t}</h3>
+            <p>${lab.d}</p>
+            <div class="details-link">
+                Access Lab Manual <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    `).join('');
+    </script>
+</body>
+</html>

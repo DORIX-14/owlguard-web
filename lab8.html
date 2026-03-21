@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 08 Manual | Wireshark Analysis | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab8.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" style="color: #fff; text-decoration: none;"><i class="fas fa-arrow-left"></i> HOME </a>
+    </nav>
+
+    <header class="lab-header">
+        <p>LAB 08</p>
+        <h1>Wireshark Traffic Analysis Manual</h1>
+        <p>Network packets ko capture aur analyze karke hidden data nikalna.</p>
+    </header>
+
+    <div class="content-container">
+
+        <section class="commands-section">
+            <h2><i class="fas fa-filter"></i> 30 Essential Display Filters</h2>
+            <p>Wireshark mein hazaron packets hote hain. In filters ka use karke aap sirf kaam ka data dekh sakte hain.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Filter Command</th>
+                            <th>Kyu Use Karein? (Purpose)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="filter-text">ip.addr == 192.168.1.1</td><td>Sirf ek specific IP ka sara traffic dekhna.</td></tr>
+                        <tr><td class="filter-text">http</td><td>Sare HTTP (unencrypted web) packets dikhao.</td></tr>
+                        <tr><td class="filter-text">dns</td><td>DNS queries aur domain names check karna.</td></tr>
+                        <tr><td class="filter-text">tcp.port == 80</td><td>Port 80 par chalne wala traffic filter karna.</td></tr>
+                        <tr><td class="filter-text">icmp</td><td>Ping requests (Echo) check karne ke liye.</td></tr>
+                        <tr><td class="filter-text">http.request.method == "POST"</td><td>Login data ya forms jo submit huye hain.</td></tr>
+                        <tr><td class="filter-text">tcp.flags.syn == 1</td><td>Connection start requests (Port scanning detection).</td></tr>
+                        <tr><td class="filter-text">udp.port == 53</td><td>Sirf UDP DNS traffic dekhna.</td></tr>
+                        <tr><td class="filter-text">frame contains "password"</td><td>Pure data mein 'password' word dhundna.</td></tr>
+                        <tr><td class="filter-text">ip.src == 1.1.1.1</td><td>Sirf "Sender" IP ke basis par filter.</td></tr>
+                        <tr><td class="filter-text">ip.dst == 8.8.8.8</td><td>Sirf "Destination" IP ke basis par filter.</td></tr>
+                        <tr><td class="filter-text">tls</td><td>Encrypted HTTPS/TLS traffic dekhne ke liye.</td></tr>
+                        <tr><td class="filter-text">arp</td><td>Address Resolution Protocol packets (Local discovery).</td></tr>
+                        <tr><td class="filter-text">http.authbasic</td><td>Basic authentication passwords pakadne ke liye.</td></tr>
+                        <tr><td class="filter-text">tcp.analysis.retransmission</td><td>Network issues aur slow connections check karna.</td></tr>
+                        <tr><td class="filter-text">eth.addr == 00:70:f4...</td><td>Specific MAC address ka traffic filter karna.</td></tr>
+                        <tr><td class="filter-text">ftp</td><td>Unencrypted file transfer traffic dekhna.</td></tr>
+                        <tr><td class="filter-text">telnet</td><td>Old remote login traffic (Very insecure).</td></tr>
+                        <tr><td class="filter-text">smtp</td><td>Email sending traffic analyze karna.</td></tr>
+                        <tr><td class="filter-text">http.response.code == 404</td><td>Sare "Not Found" errors ek sath dekhna.</td></tr>
+                        <tr><td class="filter-text">ssh</td><td>Secure shell traffic (Encrypted hota hai).</td></tr>
+                        <tr><td class="filter-text">dhcp</td><td>IP allotment (DORA process) check karna.</td></tr>
+                        <tr><td class="filter-text">tcp.window_size == 0</td><td>Check if server is busy or overloaded.</td></tr>
+                        <tr><td class="filter-text">ip.len > 1000</td><td>Bade packets (File transfers) dhundna.</td></tr>
+                        <tr><td class="filter-text">bootp</td><td>Network booting protocols check karna.</td></tr>
+                        <tr><td class="filter-text">ssl.handshake.type == 1</td><td>Client Hello packets (SSL start) dekhna.</td></tr>
+                        <tr><td class="filter-text">http.cookie</td><td>Website cookies chori (Hijacking) ke liye analysis.</td></tr>
+                        <tr><td class="filter-text">tcp.stream eq 5</td><td>Ek poori specific conversation follow karna.</td></tr>
+                        <tr><td class="filter-text">!(arp or dns)</td><td>ARP aur DNS ko hata kar baaki traffic dikhao.</td></tr>
+                        <tr><td class="filter-text">data-text-lines</td><td>Sirf wo packets jisme readable text ho.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-satellite-dish"></i> Step 1: Capture Traffic</h3>
+            <p>Wireshark open karein aur apna <span class="highlight">Network Interface</span> (Wi-Fi ya Ethernet) select karein. 'Start' button dabate hi aapko live packets dikhne shuru ho jayenge.</p>
+            <div class="logic-box">
+                <strong>Logic:</strong> Wireshark aapke network card ko "Promiscuous Mode" mein daal deta hai taaki wo har packet ko "sun" sake.
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-search"></i> Step 2: Applying Filters</h3>
+            <p>Hazaaron packets mein se login details dhundne ke liye filter bar mein type karein: <br> <code>http.request.method == "POST"</code></p>
+            <p>Isse aapko wahi packets dikhenge jahan user ne koi form (Login/Signup) bhara hai.</p>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-eye"></i> Step 3: Follow TCP Stream</h3>
+            <p>Kisi bhi packet par Right-Click karein -> <span class="highlight">Follow</span> -> <span class="highlight">TCP Stream</span>. <br> Isse aapko poori chat ya password plain text mein dikh jayega (agar site HTTP hai toh).</p>
+        </section>
+
+        <section class="step-card" style="border-left: 5px solid #ff4b2b;">
+            <h3><i class="fas fa-user-shield"></i> Safety Note</h3>
+            <p>Wireshark se doosron ka data dekhna privacy breach hai. Hamesha apne ghar ke network ya labs par hi practice karein. Aaj kal 90% sites HTTPS use karti hain, isliye unka data "Follow Stream" karne par bhi encrypted hi dikhega.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy;  2026 | Secured by OwlGuard | All Rights Reserved </p>
+    </footer>
+
+</body>
+</html>

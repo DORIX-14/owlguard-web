@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 02: Information Gathering | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <link href="lab2.css" rel="stylesheet">
+</head><link rel="icon" type="image/png" href="favicon.jpeg">
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>OWLGUARD MANUAL</h2>
+            <ul>
+                <li><a href="lab1.html">Lab 01: Google Dorking</a></li>
+                <li><a href="#part-a" class="active">Lab 02: Reconnaissance</a></li>
+                <li><a href="lab3.html">Lab 03: Phishing Analysis</a></li>
+                <li><a href="lab4.html">Lab 04: Nmap Scanning</a></li>
+            </ul>
+
+            <div class="nav-section">
+                <h2>PAGE SECTIONS</h2>
+                <ul>
+                    <li><a href="#part-a"><i class="fas fa-id-card"></i> Part A: Whois Lookup</a></li>
+                    <li><a href="#part-b"><i class="fas fa-network-wired"></i> Part B: DNS Analysis</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <a href="index.html" style="color: var(--accent-blue);"><i class="fas fa-arrow-left"></i> HOME</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="lab-header">
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> HOME</a>
+                <br>
+                <span class="badge">Reconnaissance Phase</span>
+                <h1 class="lab-title">Lab 02: Information Gathering</h1>
+                <p style="color: var(--text-gray); max-width: 800px;">Is lab mein hum seekhenge ki kaise kisi target domain ki hidden technical aur ownership details nikaali jati hain using Whois aur DNS Enumeration.</p>
+            </div>
+
+            <section id="part-a">
+                <h2 style="color: #fff; font-size: 1.8rem; margin-bottom: 20px;"><i class="fas fa-id-card" style="color: var(--primary-color);"></i> Part A: Whois Lookup</h2>
+                <p>Whois ek query protocol hai jo domain name ke owners, registration dates aur technical contacts ki jaankari deta hai.</p>
+
+                <div class="step-box">
+                    <h3><i class="fas fa-search"></i> Step 1: Online Search</h3>
+                    <p>Browser mein <strong><a href="https://whois.com" target="_blank" style="color:var(--primary-color)">Whois.com</a></strong> kholo aur target domain (e.g., <code>owlguard.in</code>) enter karo.</p>
+                    
+                    <div class="img-placeholder">
+                        <img src="whoislook.png" alt="Whois Lookup Screenshot">
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <h3><i class="fas fa-list-check"></i> Step 2: Key Points to Analyze</h3>
+                    <ul>
+                        <li><strong>Registrar:</strong> Wo company jahan se domain liya gaya (e.g. GoDaddy).</li>
+                        <li><strong>Creation Date:</strong> Kab website pehli baar register hui.</li>
+                        <li><strong>Name Servers:</strong> Website ka traffic kahan se route ho raha hai.</li>
+                    </ul>
+                </div>
+
+                <div class="info-tip">
+                    <strong>Hacker Tip:</strong> Agar 'Privacy Protection' enabled hai, toh owner ka asli naam aur phone number hidden rahega.
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <section id="part-b">
+                <h2 style="color: #fff; font-size: 1.8rem; margin-bottom: 20px;"><i class="fas fa-network-wired" style="color: var(--primary-color);"></i> Part B: DNS Enumeration</h2>
+                <p>DNS lookup se hum domain name ko IP address mein translate karte hain.</p>
+
+                <div class="step-box">
+                    <h3><i class="fas fa-table"></i> Step 1: Understanding DNS Records</h3>
+                    <table class="record-table">
+                        <tr><th>Record</th><th>Description</th></tr>
+                        <tr><td><strong>A Record</strong></td><td>IPv4 Address (Server Location)</td></tr>
+                        <tr><td><strong>MX Record</strong></td><td>Mail Exchange (Email Servers)</td></tr>
+                        <tr><td><strong>TXT Record</strong></td><td>Verification records aur security policies.</td></tr>
+                    </table>
+                </div>
+
+                <div class="step-box">
+                    <h3><i class="fas fa-terminal"></i> Step 2: Command Line Method</h3>
+                    <p>Terminal mein ye command type karein:</p>
+                    <div class="code-block">nslookup owlguard.in</div>
+                </div>
+            </section>
+
+            <div style="margin-top: 80px; padding: 40px; background: #0d1117; border-radius: 15px; text-align: center;">
+                <h3 style="color: var(--primary-color); margin-bottom: 15px;">Lab 02 Assignment</h3>
+                <p style="font-size: 0.9rem; color: var(--text-gray);">Report taiyaar karein aur submit karein.</p>
+                <br>
+                <a href="lab3.html" class="badge" style="background: var(--primary-color); color: #000; padding: 10px 20px;">Next: Phishing Analysis →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

