@@ -1,4 +1,4 @@
-/* --- CSS VARIABLES --- */
+/* --- OWLGUARD CORE STYLES --- */
 :root {
     --primary: #00ff88;
     --secondary: #60efff;
@@ -11,7 +11,7 @@
     --neon-glow: 0 0 20px rgba(0, 255, 136, 0.2);
 }
 
-/* --- GLOBAL STYLES --- */
+/* --- GLOBAL RESET --- */
 * {
     margin: 0;
     padding: 0;
@@ -30,6 +30,7 @@ body {
     overflow-x: hidden;
 }
 
+/* --- REUSABLE COMPONENTS --- */
 .section {
     padding: 80px 8%;
     position: relative;
@@ -75,18 +76,18 @@ body {
     background: transparent;
     border: 1px solid var(--primary);
     color: var(--primary);
-    margin-left: 10px;
 }
 
-/* --- NAVIGATION --- */
+/* --- NAVIGATION (FIXED) --- */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 8%;
+    padding: 0 8%;
     background: rgba(5, 6, 9, 0.95);
     position: fixed;
     width: 100%;
+    height: 75px;
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid var(--border);
@@ -131,10 +132,7 @@ nav {
     display: flex;
     list-style: none;
     align-items: center;
-}
-
-.nav-links li {
-    margin-left: 25px;
+    gap: 25px;
 }
 
 .nav-links a {
@@ -145,8 +143,7 @@ nav {
     transition: 0.3s;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a:hover, .nav-links a.active {
     color: var(--primary);
 }
 
@@ -156,36 +153,14 @@ nav {
     padding: 8px 18px;
     border-radius: 4px;
     font-weight: 700 !important;
-    
 }
 
-/* Mobile Menu Toggle logic */
-@media (max-width: 768px) {
-    /* --- Mobile Menu Logic --- */
-    .nav-links {
-        display: none; /* Phone pe pehle chhupa do */
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        background: #0d1117;
-        padding: 20px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .nav-links.active {
-        display: flex; /* Click hone par menu dikhega */
-    }
-
-    /* --- Toggler Button (Hamburger) --- */
-    .menu-icon {
-        display: block !important; /* Phone par toggler ko zinda karo */
-        cursor: pointer;
-        color: var(--primary);
-        font-size: 1.5rem;
-    }
-
+.menu-icon {
+    display: none; /* Hidden on Desktop */
+    cursor: pointer;
+    color: var(--primary);
+    font-size: 1.5rem;
+}
 
 /* --- HERO SECTION --- */
 .hero {
@@ -197,6 +172,7 @@ nav {
     text-align: center;
     background: radial-gradient(circle at 50% 50%, #112240 0%, #050609 100%);
     padding: 0 15%;
+    padding-top: 75px; /* Offset for fixed nav */
 }
 
 .cyber-badge {
@@ -206,6 +182,7 @@ nav {
     margin-bottom: 15px;
     font-weight: 600;
     text-transform: uppercase;
+    display: block;
 }
 
 .hero h1 {
@@ -224,7 +201,7 @@ nav {
     margin-bottom: 35px;
 }
 
-/* --- LEVEL 0: FOUNDATION SECTION --- */
+/* --- FOUNDATION SECTION --- */
 .foundation-card {
     background: rgba(17, 21, 28, 0.6);
     border: 1px solid var(--border);
@@ -235,12 +212,6 @@ nav {
     gap: 40px;
     align-items: center;
     backdrop-filter: blur(10px);
-}
-
-.foundation-card h3 {
-    color: var(--primary);
-    font-size: 1.8rem;
-    margin-bottom: 15px;
 }
 
 .feature-list {
@@ -258,7 +229,6 @@ nav {
 .feature-list li i {
     color: var(--primary);
     margin-right: 12px;
-    font-size: 0.9rem;
 }
 
 .foundation-visual {
@@ -266,10 +236,6 @@ nav {
     color: rgba(0, 255, 136, 0.05);
     position: relative;
     text-align: center;
-}
-
-.foundation-visual i.main-icon {
-    filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.2));
 }
 
 .floating-code {
@@ -283,37 +249,8 @@ nav {
 }
 
 @keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
-}
-
-/* --- ABOUT MISSION --- */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.awareness-box {
-    background: #0d1117;
-    border-left: 4px solid var(--primary);
-    padding: 25px;
-    margin-top: 30px;
-    border-radius: 0 10px 10px 0;
-}
-
-.awareness-quote {
-    font-style: italic;
-    color: var(--secondary);
-    font-size: 1rem;
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 
 /* --- LABS CAROUSEL --- */
@@ -343,41 +280,19 @@ nav {
 .carousel-card:hover {
     border-color: var(--primary);
     transform: translateY(-10px);
-    background: #161b22;
-}
-
-.lab-num-tag {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.05);
-    font-size: 2.5rem;
-}
-
-.carousel-card i {
-    font-size: 2rem;
-    color: var(--primary);
-    margin-bottom: 15px;
 }
 
 @keyframes scroll-labs {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
-/* --- ACHIEVEMENTS STRIP --- */
+/* --- ACHIEVEMENTS --- */
 .achievements {
     background: #080a10;
     padding: 25px 0;
     overflow: hidden;
     border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
 }
 
 .achievement-track {
@@ -386,30 +301,16 @@ nav {
 }
 
 .achievement-item {
-    display: flex;
-    align-items: center;
-    color: var(--secondary);
     margin: 0 40px;
     white-space: nowrap;
+    color: var(--secondary);
     font-weight: 600;
-    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.achievement-item i {
-    margin-right: 10px;
-    color: var(--primary);
 }
 
 @keyframes scroll-achievements {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* --- FOOTER --- */
@@ -423,32 +324,6 @@ footer {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 50px;
-    margin-bottom: 50px;
-}
-
-.footer-logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-}
-
-.footer-logo span {
-    color: var(--primary);
-}
-
-.status-indicator {
-    display: inline-flex;
-    align-items: center;
-    background: rgba(0, 255, 136, 0.05);
-    padding: 8px 15px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    color: var(--primary);
-    margin-top: 20px;
-    border: 1px solid rgba(0, 255, 136, 0.1);
-    font-weight: 600;
 }
 
 .status-dot {
@@ -456,154 +331,60 @@ footer {
     height: 8px;
     background: var(--primary);
     border-radius: 50%;
-    margin-right: 10px;
+    display: inline-block;
+    margin-right: 8px;
     animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-        box-shadow: 0 0 5px var(--primary);
-    }
-
-    50% {
-        opacity: 0.3;
-    }
+    0%, 100% { opacity: 1; box-shadow: 0 0 5px var(--primary); }
+    50% { opacity: 0.3; }
 }
 
-.footer-column h4 {
-    color: #fff;
-    margin-bottom: 25px;
-    font-size: 1.1rem;
-    position: relative;
-}
-
-.footer-column h4::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 30px;
-    height: 2px;
-    background: var(--primary);
-}
-
-.footer-links {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 12px;
-}
-
-.footer-links a {
-    color: var(--text-gray);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: 0.3s;
-}
-
-.footer-links a:hover {
-    color: var(--primary);
-    padding-left: 5px;
-}
-
-.footer-socials {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.footer-socials a {
-    width: 40px;
-    height: 40px;
-    background: #11151c;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    color: #fff;
-    transition: 0.3s;
-    text-decoration: none;
-}
-
-.footer-socials a:hover {
-    background: var(--primary);
-    color: #000;
-    transform: translateY(-5px);
-    box-shadow: var(--neon-glow);
-}
-
-.footer-bottom {
-    text-align: center;
-    border-top: 1px solid var(--border);
-    padding-top: 30px;
-    color: #555;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-}
-
-/* --- BACK TO TOP --- */
-#scrollTopBtn {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--primary);
-    color: #000;
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-#scrollTopBtn:hover {
-    transform: translateY(-5px);
-    background: var(--secondary);
-}
-
-.show-btn {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-}
-
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE LOGIC (THE FIX) --- */
 @media (max-width: 992px) {
-    .hero h1 {
-        font-size: 3.5rem;
-    }
+    .hero h1 { font-size: 3.5rem; }
+    .foundation-card, .footer-grid, .about-grid { grid-template-columns: 1fr; }
+}
 
-    .about-grid,
-    .footer-grid,
-    .foundation-card {
-        grid-template-columns: 1fr;
-    }
-
-    .foundation-card {
-        text-align: center;
-        padding: 30px;
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block !important;
     }
 
     .nav-links {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #0d1117;
+        padding: 40px 20px;
+        border-bottom: 2px solid var(--primary);
+        gap: 20px;
     }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero h1 { font-size: 2.8rem; }
+    .hero { padding: 0 10%; }
 }
 
+/* --- AOS FIX --- */
 [data-aos] {
     opacity: 0;
     transform: translateY(30px);
-    transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.8s ease-out;
 }
 
 .aos-animate {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+#scrollTopBtn.show-btn {
+    display: flex;
 }
