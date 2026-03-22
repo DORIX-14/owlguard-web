@@ -15,16 +15,16 @@
 <body>
 
     <nav>
-        <div class="menu-icon" style="display:none;" onclick="toggleMenu()">
-    <i class="fas fa-bars"></i>
-</div>
-<nav class="nav-links" id="navLinks">
-    </nav>
         <a href="#home" class="logo-container">
             <div class="logo-icon"><img src="logo.png" alt="OwlGuard"></div>
             <div class="logo-text">OWLGUARD</div>
         </a>
-        <ul class="nav-links">
+
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="pre" style="color:var(--secondary); font-weight:700;">Foundation</a></li>
             <li><a href="14labs">14 Labs</a></li>
@@ -33,6 +33,7 @@
         </ul>
     </nav>
 
+  
     <section class="hero" id="home">
         <div data-aos="fade-up">
             <span class="cyber-badge">Elite Security Training </span>
@@ -205,8 +206,12 @@
             else btn.classList.remove("show-btn");
         };
         const topClick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+       
+            
+}
         function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('active');
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('active');
 }
     </script>
 </body>
