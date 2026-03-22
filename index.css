@@ -156,6 +156,30 @@ nav {
     padding: 8px 18px;
     border-radius: 4px;
     font-weight: 700 !important;
+    
+}
+/* Mobile Menu Toggle logic */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Phone pe pehle chhupa do */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 70px; /* Header ki height ke hisaab se */
+        left: 0;
+        background: #0d1117;
+        padding: 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-links.active {
+        display: flex; /* Button click hone pe dikhao */
+    }
+    .menu-icon {
+        display: block !important; /* Hamburger icon dikhao */
+        cursor: pointer;
+        color: #00ff88;
+        font-size: 1.5rem;
+    }
 }
 
 /* --- HERO SECTION --- */
