@@ -8,8 +8,7 @@
     <link rel="icon" type="image/png" href="favicon.jpeg">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
- <link href="index.css" rel="stylesheet">
- 
+    <link href="index.css" rel="stylesheet">
 </head>
 
 <body>
@@ -33,7 +32,6 @@
         </ul>
     </nav>
 
-  
     <section class="hero" id="home">
         <div data-aos="fade-up">
             <span class="cyber-badge">Elite Security Training </span>
@@ -54,18 +52,15 @@
                     <span class="cyber-badge" style="color: var(--secondary); background: rgba(96, 239, 255, 0.05); padding: 4px 12px; border-radius: 4px;">Level 00: Operational Foundation</span>
                     <h3 style="margin-top: 15px;">Build the Unbreakable Mindset</h3>
                     <p style="color: var(--text-gray);">Direct labs par jaane se pehle, apna environment aur basic skills master karein. Hacking tools se zyada terminal ki muscle memory zaroori hai.</p>
-                    
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> 30+ Essential Linux Commands Mastery</li>
                         <li><i class="fas fa-check-circle"></i> VirtualBox & Kali Linux Setup Guide</li>
                         <li><i class="fas fa-check-circle"></i> Networking Essentials (IP, Ports, DNS)</li>
                     </ul>
-                    
                     <a href="pre" class="btn" style="background: var(--secondary); box-shadow: 0 0 20px rgba(96, 239, 255, 0.2);">
                         Access Prerequisites <i class="fas fa-unlock-alt"></i>
                     </a>
                 </div>
-                
                 <div class="foundation-visual">
                     <i class="fas fa-user-shield main-icon"></i>
                     <i class="fas fa-code floating-code"></i>
@@ -146,10 +141,8 @@
             <div class="footer-column">
                 <h4>Connect</h4>
                 <div class="footer-socials">
-                    
                     <a href="https://linkedin.com/in/krrishpandey06" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://instagram.com/owlguard.in" target="_blank"><i class="fab fa-instagram"></i></a>
-                    
                 </div>
                 <p style="color:#555; margin-top:20px; font-size:0.8rem; font-family: 'Fira Code', monospace;">blackblunix@gmail.com</p>
             </div>
@@ -162,7 +155,6 @@
     <button id="scrollTopBtn" onclick="topClick()"><i class="fas fa-chevron-up"></i></button>
 
     <script>
-        // Labs Data
         const labs = [
             { n: "01", t: "Google Dorking", d: "Mastering advanced search operators.", i: "fa-search" },
             { n: "02", t: "Whois & DNS", d: "Information gathering & enumeration.", i: "fa-id-card" },
@@ -190,30 +182,25 @@
             </div>
         `).join('');
 
-        // Triple clone for infinite animation
         labsTrack.innerHTML = render(labs) + render(labs) + render(labs);
 
-        // AOS Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('aos-animate'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('[data-aos]').forEach(item => observer.observe(item));
 
-        // Scroll Top Logic
         window.onscroll = function () {
             const btn = document.getElementById("scrollTopBtn");
             if (document.documentElement.scrollTop > 500) btn.classList.add("show-btn");
             else btn.classList.remove("show-btn");
         };
+
         const topClick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-       
-            
-}
+
         function toggleMenu() {
-    const nav = document.getElementById('navLinks');
-    nav.classList.toggle('active');
-}
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
     </script>
 </body>
-
 </html>
