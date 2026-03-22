@@ -158,9 +158,7 @@ nav {
     font-weight: 700 !important;
     
 }
-.menu-icon {
-    display: none; /* Desktop/Laptop par default hidden rahega */
-}
+
 /* Mobile Menu Toggle logic */
 @media (max-width: 768px) {
     /* --- Mobile Menu Logic --- */
